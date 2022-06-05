@@ -17,9 +17,13 @@ _**Notas de prueba para Juan:**_
 | Matematica | 10 | 10 | 9  | 8  |
 | Fisica     | 10 | 9  | 7  | 4  |
 | Quimica    | 1  | 3  | 2  | 6  |
+
 _Resultados:_
+
 _**Matemática:** 9.25 (Aprobado)_
+
 _**Geografía:** 7.5 (Apobado)_
+
 _**Física:** 3 (Recursa)_
 
 _**Notas de prueba para Valentin:**_
@@ -30,6 +34,9 @@ _**Notas de prueba para Valentin:**_
 | Quimica    | 6  | 4  | 6  | 5  |
 
 _Resultados:_
+
 _**Matemática:** 5.5 (Recursa)_
+
 _**Geografía:** 7.5 (Apobado)_
+
 _**Física:** 5.25 (Recursa)_
