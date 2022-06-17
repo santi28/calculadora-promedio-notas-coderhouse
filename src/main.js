@@ -68,20 +68,26 @@ function createStudentWithCalifications (name) {
   return student
 }
 
+function printCalificationsOnTable (tableID, studentCalifications) {
+  const table = document.getElementById(tableID)
+}
+
 const juan = createStudentWithCalifications('Juan')
 const juanCalifications = juan.getAverageCalification()
 
 const valentin = createStudentWithCalifications('Valentin')
 const valentinCalifications = valentin.getAverageCalification()
 
-alert(`
-Alumnos:
-  ${juan.name}:
-    Matemática: ${juanCalifications.math.average} (${juanCalifications.math.approved})
-    Geografía: ${juanCalifications.geography.average} (${juanCalifications.geography.approved})
-    Física: ${juanCalifications.physics.average} (${juanCalifications.physics.approved})
-  ${valentin.name}:
-    Matemática: ${valentinCalifications.math.average} (${valentinCalifications.math.approved})
-    Geografía: ${valentinCalifications.geography.average} (${valentinCalifications.geography.approved})
-    Física: ${valentinCalifications.physics.average} (${valentinCalifications.physics.approved})
-`)
+printCalificationsOnTable('resultadosJuan', juanCalifications)
+
+// alert(`
+// Alumnos:
+//   ${juan.name}:
+//     Matemática: ${juanCalifications.math.average} (${juanCalifications.math.approved})
+//     Geografía: ${juanCalifications.geography.average} (${juanCalifications.geography.approved})
+//     Física: ${juanCalifications.physics.average} (${juanCalifications.physics.approved})
+//   ${valentin.name}:
+//     Matemática: ${valentinCalifications.math.average} (${valentinCalifications.math.approved})
+//     Geografía: ${valentinCalifications.geography.average} (${valentinCalifications.geography.approved})
+//     Física: ${valentinCalifications.physics.average} (${valentinCalifications.physics.approved})
+// `)
