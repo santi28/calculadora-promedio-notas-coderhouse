@@ -123,20 +123,7 @@ function printCalificationsOnTable (tableID, student) {
 }
 
 const juan = createStudentWithCalifications('Juan')
-
-// const valentin = createStudentWithCalifications('Valentin')
-// const valentinCalifications = valentin.getAverageCalification()
-
 printCalificationsOnTable('resultadosJuan', juan)
 
-// alert(`
-// Alumnos:
-//   ${juan.name}:
-//     Matemática: ${juanCalifications.math.average} (${juanCalifications.math.approved})
-//     Geografía: ${juanCalifications.geography.average} (${juanCalifications.geography.approved})
-//     Física: ${juanCalifications.physics.average} (${juanCalifications.physics.approved})
-//   ${valentin.name}:
-//     Matemática: ${valentinCalifications.math.average} (${valentinCalifications.math.approved})
-//     Geografía: ${valentinCalifications.geography.average} (${valentinCalifications.geography.approved})
-//     Física: ${valentinCalifications.physics.average} (${valentinCalifications.physics.approved})
-// `)
+const valentin = createStudentWithCalifications('Valentin')
+printCalificationsOnTable('resultadosValentin', valentin)
