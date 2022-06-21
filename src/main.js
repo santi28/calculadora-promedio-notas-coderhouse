@@ -21,9 +21,9 @@ function Student (name, math, physics, geography) {
   /** Retorna todas las calificaciones en una lista */
   this.getCalifications = function () {
     return [
-      { subject: 'math', califications: this.math },
-      { subject: 'geography', califications: this.geography },
-      { subject: 'physics', califications: this.physics }
+      { subject: diccionarioDeMaterias.math, califications: this.math, average: this.getAverage(this.math) },
+      { subject: diccionarioDeMaterias.geography, califications: this.geography, average: this.getAverage(this.geography) },
+      { subject: diccionarioDeMaterias.physics, califications: this.physics, average: this.getAverage(this.physics) }
     ]
   }
 
@@ -32,9 +32,10 @@ function Student (name, math, physics, geography) {
    */
   this.getAverage = function (subject) {
     let average = 0
+
     for (let i = 0; i < subject.length; i++) {
       // Obtiene la suma de todas las notas
-      average += subject[i]
+      average += parseInt(subject[i])
     }
 
     // Obtiene el promedio de la suma de todas las notas
@@ -63,63 +64,75 @@ function Student (name, math, physics, geography) {
   }
 }
 
-function loadCalifications (subject, name) {
-  const califications = []
-  for (let i = 0; i < 4; i++) {
-    // Carga de calificaciones de prueba mediante metodo Math, para que no se tengan que cargar manualmente en desarrollo
-    if (debugMode) {
-      const randomCalification = Math.floor(Math.random() * 10) + 1
-      console.log(`Califiación de ${name} en ${subject} en cuatrimestre ${i + 1}: ${randomCalification}`)
-      califications.push(randomCalification)
-      continue // Termina la iteración actual y continua con la siguiente
-    }
-
-    let calification = parseInt(prompt(`${name}\nIngrese la nota para ${subject} en el cuatrimestre ${i + 1}`))
-    while (isNaN(calification) || calification < 0 || calification > 10) {
-      calification = parseInt(prompt(`${name}\nIngrese una nota valida para ${subject} en el cuatrimestre ${i + 1}`))
-    }
-
-    califications.push(calification)
-  }
-
-  return califications
-}
-
-function createStudentWithCalifications (name) {
-  const student = new Student(name)
-  student.math = loadCalifications('Matemática', name)
-  student.geography = loadCalifications('Geografía', name)
-  student.physics = loadCalifications('Física', name)
-
-  return student
-}
-
-/** Imprime en la tabla deseada la información del alumno
- * @param {string} tableID
- * @param {Student} student
- */
-function printCalificationsOnTable (tableID, student) {
-  const table = document.getElementById(tableID)
-
-  // Obtiene las calificaciones de cada materia
-  const subjects = student.getCalifications()
-
-  const subjectsRows = subjects.map(subject => {
-    const { approved, average } = student.getAverage(subject.califications)
-    const subjectNaturalName = diccionarioDeMaterias[subject.subject]
-
+/** Imprime en la tabla deseada la información del alumno */
+function createTableRows (subjects) {
+  return subjects.map(subject => {
     const tableRow = document.createElement('tr')
+    tableRow.className = 'bg-white border-b'
+
     tableRow.innerHTML = `
-      <td>${subjectNaturalName}</td>
-      ${subject.califications.map(calification => `<td>${calification}</td>`).join('')}
-      <td>${approved ? 'Aprobado' : 'Desaprobado'}</td>
-      <td>${average}</td>
+      <td class="px-6 py-4 font-medium text-gray-900">${subject.subject}</td>
+      ${subject.califications.map(calification => `<td class="px-6 py-4">${calification}</td>`).join('')}
+      <td class="px-6 py-4">${subject.average.approved ? 'Aprobado' : 'Desaprobado'}</td>
+      <td class="px-6 py-4">${subject.average.average}</td>
     `
 
     return tableRow
   })
+}
 
-  table.innerHTML = subjectsRows.map(row => row.outerHTML).join('')
+/** Retorna la tabla con las calificaciónes del alumno
+ * @param {Student} student
+ */
+function creataCalificationsTable (student) {
+  const calificationsTable = document.createElement('table')
+  calificationsTable.className = 'w-full text-sm text-left text-gray-500'
+
+  const calificationsTableHeader = document.createElement('thead')
+  calificationsTableHeader.className = 'text-xs text-gray-700 uppercase bg-gray-50'
+  calificationsTableHeader.innerHTML = '<tr> <th class="px-6 py-3">Materia</th> <th class="px-6 py-3">1° Cuatrimestre</th> <th class="px-6 py-3">2° Cuatrimestre</th> <th class="px-6 py-3">3° Cuatrimestre</th> <th class="px-6 py-3">4° Cuatrimestre</th> <th class="px-6 py-3">Condición</th> <th class="px-6 py-3">Promedio</th> </tr>'
+  calificationsTable.appendChild(calificationsTableHeader)
+
+  const califications = student.getCalifications()
+  const calificationsRows = createTableRows(califications)
+
+  const calificationsTableBody = document.createElement('tbody')
+  calificationsTableBody.append(...calificationsRows)
+  calificationsTable.appendChild(calificationsTableBody)
+
+  return calificationsTable
+}
+
+/** Crea una tarjeta de estudiante con su tabla ETC
+ * @param {Student} student
+ */
+function createStudentCard (student) {
+  const studentCardDiv = document.createElement('div')
+  studentCardDiv.className = 'p-4 border-2 rounded-lg'
+
+  const studentNameInCard = document.createElement('h3')
+  studentNameInCard.className = 'pb-2 mb-2 border-b-2 text-lg italic font-bold'
+  studentNameInCard.innerText = student.name
+  studentCardDiv.appendChild(studentNameInCard)
+
+  const tableWrapper = document.createElement('div')
+  tableWrapper.className = 'relative overflow-x-auto shadow sm:rounded-lg'
+  tableWrapper.appendChild(creataCalificationsTable(student))
+  studentCardDiv.appendChild(tableWrapper)
+
+  return studentCardDiv
+}
+
+/** Renderiza la lista de estudiantes con sus respectivos textos y tablas
+ * @param {Student[]} students
+ */
+function renderStudents (students) {
+  const studentWrapper = document.getElementById('studentsWrapper')
+  studentWrapper.innerHTML = ''
+
+  for (const student of students) {
+    studentWrapper.appendChild(createStudentCard(student))
+  }
 }
 
 const allRegiteredStudents = []
@@ -140,12 +153,8 @@ form.addEventListener('submit', (e) => {
   const newStudent = new Student(studentName, allMathResultsInArray, allGeographyResultsInArray, allPhysicsResultsInArray)
   allRegiteredStudents.push(newStudent)
 
-  console.log(newStudent)
+  // Resetea todos los campos del formulario
+  form.reset()
+  renderStudents(allRegiteredStudents)
 })
 // #endregion
-
-// const juan = createStudentWithCalifications('Juan')
-// printCalificationsOnTable('resultadosJuan', juan)
-
-// const valentin = createStudentWithCalifications('Valentin')
-// printCalificationsOnTable('resultadosValentin', valentin)

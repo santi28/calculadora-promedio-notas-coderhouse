@@ -5,55 +5,6 @@
   padding: 0;
 }
 
-body {
-  padding: 20px;
-}
-
-h1 {
-  width: 100%;
-  font-size: 2.5rem;
-  padding-bottom: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-style: italic;
-  border-bottom: 2px #00000010 solid;
-  text-transform: uppercase;
-}
-
-/* .table_wrapper {
-  margin: 20px 0;
-  position: relative;
-  overflow-x: auto;
-  border-radius: .5rem;
-  box-shadow: 0px 10px 15px -3px #00000010;
-}
-
-table {
-  width: 100%;
-  font-size: .95rem;
-  text-align: left;
-}
-
-table > thead {
-  text-transform: uppercase;
-  background-color: #00000010;
-}
-
-table th, table td {
-  padding: 10px;
-  border-bottom: 1px #00000010 solid;
-}
-
-table td {
-  color: #000000cc;
-}
-
-table td:first-child {
-  font-weight: 700;
-  font-style: italic;
-  color: black;
-} */
-
 details > summary::after {
   content: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M15.54 11.29L9.88 5.64a1 1 0 0 0-1.42 0a1 1 0 0 0 0 1.41l4.95 5L8.46 17a1 1 0 0 0 0 1.41a1 1 0 0 0 .71.3a1 1 0 0 0 .71-.3l5.66-5.65a1 1 0 0 0 0-1.47Z"%2F%3E%3C%2Fsvg%3E');
   width: 20px;
