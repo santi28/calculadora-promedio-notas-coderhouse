@@ -1,7 +1,7 @@
-const debugMode = false
-if (debugMode) alert('ATENCIÓN: El modo de depuración está activado.\nLas calificaciones se cargaran automáticamente de manera aleatoria.')
+// const debugMode = false
+// if (debugMode) alert('ATENCIÓN: El modo de depuración está activado.\nLas calificaciones se cargaran automáticamente de manera aleatoria.')
 
-alert('Calculadora de promedios\n\nEn esta calculadora podrás cargar las notas de dos alumnos en las materias (Geografía, Matematica y Fisica). Cada materia tiene una nota de 0 a 10.\nCada materia tiene 4 cuatrimestres los cuales se promediaran.\nSi el alumno obtiene un promedio final mayor de 6, aprueba la materia, en caso contrario la desaprobara\n\nAl final, el sistema retornara, por cada alumno, el promedio de cada materia y si esta fue aprobada o no\nTambien se retornara la cantidad de alumnos que hayan aprobado dicha materia\n\nEjemplo:\n Laura\n  Geografía: Aprobada (Promedio de 8.5)\n  Matemática: Desaprobada (Promedio de 2.75)')
+// alert('Calculadora de promedios\n\nEn esta calculadora podrás cargar las notas de dos alumnos en las materias (Geografía, Matematica y Fisica). Cada materia tiene una nota de 0 a 10.\nCada materia tiene 4 cuatrimestres los cuales se promediaran.\nSi el alumno obtiene un promedio final mayor de 6, aprueba la materia, en caso contrario la desaprobara\n\nAl final, el sistema retornara, por cada alumno, el promedio de cada materia y si esta fue aprobada o no\nTambien se retornara la cantidad de alumnos que hayan aprobado dicha materia\n\nEjemplo:\n Laura\n  Geografía: Aprobada (Promedio de 8.5)\n  Matemática: Desaprobada (Promedio de 2.75)')
 
 const diccionarioDeMaterias = {
   math: 'Matemática',
@@ -9,14 +9,14 @@ const diccionarioDeMaterias = {
   physics: 'Física'
 }
 
-function Student (name) {
+function Student (name, math, physics, geography) {
   // Variables con valor inicial variable
   this.name = name
 
   // Variables con valor inicial predefinido
-  this.math = []
-  this.physics = []
-  this.geography = []
+  this.math = math
+  this.physics = physics
+  this.geography = geography
 
   /** Retorna todas las calificaciones en una lista */
   this.getCalifications = function () {
@@ -121,6 +121,28 @@ function printCalificationsOnTable (tableID, student) {
 
   table.innerHTML = subjectsRows.map(row => row.outerHTML).join('')
 }
+
+const allRegiteredStudents = []
+
+// #region Control del formulario
+const form = document.getElementById('studentForm')
+form.addEventListener('submit', (e) => {
+  e.preventDefault() // Remueve el evento por defecto del form
+  const formData = new FormData(e.target) // Obtiene todos los datos del form
+
+  const studentName = formData.get('name')
+
+  const allMathResultsInArray = formData.getAll('math')
+  const allGeographyResultsInArray = formData.getAll('geo')
+  const allPhysicsResultsInArray = formData.getAll('phy')
+
+  // Crea el nuevo estudiante en base a los datos obtenidos del form
+  const newStudent = new Student(studentName, allMathResultsInArray, allGeographyResultsInArray, allPhysicsResultsInArray)
+  allRegiteredStudents.push(newStudent)
+
+  console.log(newStudent)
+})
+// #endregion
 
 // const juan = createStudentWithCalifications('Juan')
 // printCalificationsOnTable('resultadosJuan', juan)
