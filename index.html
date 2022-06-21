@@ -14,101 +14,110 @@
 <body>
   <h1 class="border-b-2 p-6 text-3xl italic font-extrabold">Calculadora de promedios</h1>
   <main class="p-6 flex gap-6">
-    <form class="p-4 border-2 rounded-lg w-3/12	h-fit sticky top-6 flex flex-col gap-2 max-h-[42rem] overflow-auto">
+    <form id="studentForm" class="p-4 border-2 rounded-lg w-3/12	h-fit sticky top-6 flex flex-col gap-2 max-h-[42rem] overflow-auto">
       <h2 class="pb-2 mb-2 border-b-2 text-lg italic font-bold">Cargar datos de alumno</h2>
+      <!-- Grupo de input para nombre -->
       <div>
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombre del alumno</label>
         <input type="text" id="name"
           class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="John"
           required>
       </div>
+
+      <!-- Notas de matematica -->
       <details class="collapsableItem">
         <summary class="mb-2 text-md font-medium text-gray-900 flex justify-between items-center">Matemática</summary>
         <div class="collapsableContent flex flex-col gap-2">
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="math1c" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
+            <input type="number" id="math1c" name="math1c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="math2c" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
+            <input type="number" id="math2c" name="math2c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="math3c" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
+            <input type="number" id="math3c" name="math3c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="math4c" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
+            <input type="number" id="math4c" name="math4c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
         </div>
       </details>
+
+      <!-- Notas de geografía -->
       <details class="collapsableItem">
         <summary class="mb-2 text-md font-medium text-gray-900 flex justify-between items-center">Geografía</summary>
         <div class="collapsableContent flex flex-col gap-2">
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="geo1c" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
+            <input type="number" id="geo1c" name="geo1c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="geo2c" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
+            <input type="number" id="geo2c" name="geo2c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="geo3c" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
+            <input type="number" id="geo3c" name="geo3c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="geo4c" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
+            <input type="number" id="geo4c" name="geo4c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
         </div>
       </details>
+
+      <!-- Notas de fisica -->
       <details class="collapsableItem">
-        <summary class="mb-2 text-md font-medium text-gray-900 flex justify-between items-center">Físcia</summary>
+        <summary class="mb-2 text-md font-medium text-gray-900 flex justify-between items-center">Física</summary>
         <div class="collapsableContent flex flex-col gap-2">
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="phy1c" class="block mb-2 text-sm font-medium text-gray-900">Primer Cuatrimestre</label>
+            <input type="number" id="phy1c" name="phy1c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="phy2c" class="block mb-2 text-sm font-medium text-gray-900">Segundo Cuatrimestre</label>
+            <input type="number" id="phy2c" name="phy2c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="phy3c" class="block mb-2 text-sm font-medium text-gray-900">Tercer Cuatrimestre</label>
+            <input type="number" id="phy3c" name="phy3c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
           <div>
-            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
-            <input type="number" id="name"
+            <label for="phy4c" class="block mb-2 text-sm font-medium text-gray-900">Cuarto Cuatrimestre</label>
+            <input type="number" id="phy4c" name="phy4c"
               class="p-2.5 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg" placeholder="10"
               required>
           </div>
         </div>
       </details>
+
+      <!-- Grupo de botones -->
       <div class="w-full flex gap-4">
         <input class="flex-1 rounded-lg p-2 bg-red-600 cursor-pointer text-white" type="reset" value="Restablecer">
         <input class="flex-1 rounded-lg p-2 bg-indigo-500 cursor-pointer text-white" type="submit" value="Añadir">
@@ -434,6 +443,7 @@
       </div>
     </div>
   </main>
+  <script src="./src/main.js"></script>
 </body>
 
 </html>

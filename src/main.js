@@ -122,8 +122,8 @@ function printCalificationsOnTable (tableID, student) {
   table.innerHTML = subjectsRows.map(row => row.outerHTML).join('')
 }
 
-const juan = createStudentWithCalifications('Juan')
-printCalificationsOnTable('resultadosJuan', juan)
+// const juan = createStudentWithCalifications('Juan')
+// printCalificationsOnTable('resultadosJuan', juan)
 
-const valentin = createStudentWithCalifications('Valentin')
-printCalificationsOnTable('resultadosValentin', valentin)
+// const valentin = createStudentWithCalifications('Valentin')
+// printCalificationsOnTable('resultadosValentin', valentin)
